@@ -26,6 +26,9 @@ Build
 
 ## Projects steps:
 
+Installing Angular:
+  - `npm install -g @angular/cli`
+
 Generating a component:
   - `ng generate component componentName`
 

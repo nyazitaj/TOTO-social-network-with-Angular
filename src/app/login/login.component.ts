@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { userIndex } from '../interface';
 import { UserService } from '../user.service';
 
 @Component({
@@ -42,11 +43,34 @@ export class LoginComponent implements OnInit {
     this.userService.connection(this.logForm.value.login, this.logForm.value.pass)
   } */
 
+  result: any = []
+
   ngConnect() {
     // console.log(this.logForm.value)
     // this.userService.connection(this.email, this.pass)
-    console.log(
-      this.userService.connectUser({email: this.email,password: this.password})
-    )
+
+    this.result = this.userService.connectUser({ email: this.email, password: this.password }).subscribe(/* {
+      next: result => {
+        this.result = result
+      }
+    } */)
+    /* console.log(
+      this.result
+    ) */
+
+    /* console.log(
+      this.userService.getConfig()
+    ) */
   }
+
+
+  /* albums: any = [];
+  constructor(private _albumService: AlbumService) { }
+  ngOnInit() {
+    this._albumService.getAllAlbums().subscribe({
+      next: albums => {
+        this.albums = albums
+      }
+    })
+  } */
 }
