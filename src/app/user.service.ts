@@ -30,7 +30,8 @@ export class UserService {
     return this.http.post/* <RetLogin> */(this.urlBase + "/connect", login, this.httpOptions)
       .pipe(
         tap(data =>
-          console.log('All: ' + JSON.stringify(data))),
+          data
+        ),
         /* catchError(this.handleError) */
       )
   }

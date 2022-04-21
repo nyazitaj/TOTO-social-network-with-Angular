@@ -49,11 +49,11 @@ export class LoginComponent implements OnInit {
     // console.log(this.logForm.value)
     // this.userService.connection(this.email, this.pass)
 
-    this.result = this.userService.connectUser({ email: this.email, password: this.password }).subscribe(/* {
+    this.result = this.userService.connectUser({ email: this.email, password: this.password }).subscribe({
       next: result => {
-        this.result = result
+        console.log(result)
       }
-    } */)
+    })
     /* console.log(
       this.result
     ) */
