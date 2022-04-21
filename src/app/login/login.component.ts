@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-root',
@@ -7,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  constructor(private formBuilder: FormBuilder, private userService: UserService) { }
 
   ngOnInit(): void {
   }
@@ -25,5 +27,26 @@ export class LoginComponent implements OnInit {
     this.email = ""
     this.pass = ""
 
+  }
+
+  password: string = ""
+
+
+  /* logForm = this.formBuilder.group({
+    login: '',
+    pass: ''
+  });
+
+  ngConnect() {
+    // console.log(this.logForm.value)
+    this.userService.connection(this.logForm.value.login, this.logForm.value.pass)
+  } */
+
+  ngConnect() {
+    // console.log(this.logForm.value)
+    // this.userService.connection(this.email, this.pass)
+    console.log(
+      this.userService.connectUser({email: this.email,password: this.password})
+    )
   }
 }

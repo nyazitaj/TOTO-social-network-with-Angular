@@ -23,3 +23,11 @@ Code scaffolding
 
 Build
   - Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+
+## Projects steps:
+
+Generating a component:
+  - `ng generate component componentName`
+
+Generating a service class:
+  - `ng generate service serviceName`

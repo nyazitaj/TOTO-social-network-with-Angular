@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  title = 'coursAngular'; 
+  title = 'coursAngular';
 
   tab: any = [
     /* {
@@ -26,7 +27,7 @@ export class AppComponent implements OnInit {
     }, */
   ];
 
-  constructor() {}
+  constructor() { }
 
   ngOnInit(): void {
   }
@@ -53,4 +54,5 @@ export class AppComponent implements OnInit {
     this.tel = ""
 
   }
+
 }
