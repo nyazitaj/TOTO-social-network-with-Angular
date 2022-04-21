@@ -2,11 +2,10 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  templateUrl: './signup.component.html',
 })
-export class AppComponent implements OnInit {
-  title = 'coursAngular'; 
+export class SignupComponent implements OnInit {
+  title = 'coursAngular';
 
   tab: any = [
     /* {

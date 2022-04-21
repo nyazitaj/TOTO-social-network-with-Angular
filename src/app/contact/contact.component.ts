@@ -1,37 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'app-contact',
+  templateUrl: './contact.component.html',
 })
-export class AppComponent implements OnInit {
-  title = 'coursAngular'; 
+export class ContactComponent implements OnInit {
 
-  tab: any = [
-    /* {
-      nom: "Doe",
-      prenom: "John",
-      age: 24
-    },
-    {
-      nom: "Monstre",
-      prenom: "Anabelle",
-      age: 37
-    },
-    {
-      nom: "Van",
-      prenom: "Helsing",
-      age: 37
-    }, */
-  ];
-
-  constructor() {}
+  constructor() { }
 
   ngOnInit(): void {
   }
 
   items: string[] = []
+
+  tab: any = [];
 
   arrayTemp: any = {};
   nom: string = "";
@@ -53,4 +35,5 @@ export class AppComponent implements OnInit {
     this.tel = ""
 
   }
+
 }

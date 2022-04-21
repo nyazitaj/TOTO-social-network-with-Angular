@@ -1,0 +1,25 @@
+<section>
+    <ul>
+        <li *ngFor="let x of tab; index as i;">{{ x.nom }} {{ x.prenom }}</li>
+    </ul>
+
+    <div class="ligne">
+        <div class="row-field">
+            <input type="text" placeholder="Votre nom" [(ngModel)]="nom" />
+        </div>
+
+        <div class="row-field">
+            <input type="text" placeholder="Votre prénom" [(ngModel)]="prenom" />
+        </div>
+
+        <div class="row-field">
+            <input type="email" placeholder="Votre prénom" [(ngModel)]="email" />
+        </div>
+
+        <div class="row-field">
+            <input type="tel" placeholder="Votre prénom" [(ngModel)]="tel" />
+        </div>
+
+        <button id="submit" (click)="ajouter()">Enregistrer</button>
+    </div>
+</section>
