@@ -1,25 +1,36 @@
 <section>
-    <ul>
-        <li *ngFor="let x of tab; index as i;">{{ x.nom }} {{ x.prenom }}</li>
-    </ul>
 
-    <div class="ligne">
-        <div class="row-field">
-            <input type="text" placeholder="Votre nom" [(ngModel)]="nom" />
+    <div class="container">
+        <div class="form-container">
+            <div class="page-title">
+                <h2>Contact</h2>
+            </div>
+
+            <form>
+                <div class="row-field">
+                    <label for="nom">Nom</label>
+                    <input type="text" name="nom" id="nom" [(ngModel)]="nom" />
+                </div>
+
+                <div class="row-field">
+                    <label for="prenom">Prénom</label>
+                    <input type="text" name="prenom" id="prenom" [(ngModel)]="prenom" />
+                </div>
+
+                <div class="row-field">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email" [(ngModel)]="email" />
+                </div>
+
+                <div class="row-field">
+                    <label for="tel">Téléphone</label>
+                    <input type="tel" name="text" id="text" [(ngModel)]="tel" />
+                </div>
+
+                <div class="row-field">
+                    <button id="submit" (click)="envoyer()">Envoyer</button>
+                </div>
+            </form>
         </div>
-
-        <div class="row-field">
-            <input type="text" placeholder="Votre prénom" [(ngModel)]="prenom" />
-        </div>
-
-        <div class="row-field">
-            <input type="email" placeholder="Votre prénom" [(ngModel)]="email" />
-        </div>
-
-        <div class="row-field">
-            <input type="tel" placeholder="Votre prénom" [(ngModel)]="tel" />
-        </div>
-
-        <button id="submit" (click)="ajouter()">Enregistrer</button>
     </div>
 </section>

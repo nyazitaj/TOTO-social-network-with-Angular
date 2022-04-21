@@ -1,1 +1,26 @@
-Connexion
+<section>
+
+    <div class="container">
+        <div class="form-container">
+            <div class="page-title">
+                <h2>Connextion</h2>
+            </div>
+
+            <form>
+                <div class="row-field">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email" [(ngModel)]="email" />
+                </div>
+
+                <div class="row-field">
+                    <label for="pass">Mot de passe</label>
+                    <input type="password" name="pass" id="pass" [(ngModel)]="pass" />
+                </div>
+
+                <div class="row-field">
+                    <button id="submit" (click)="loginUser()">Connecter</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>

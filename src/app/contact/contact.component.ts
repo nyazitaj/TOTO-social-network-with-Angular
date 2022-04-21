@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-contact',
   templateUrl: './contact.component.html',
+  styleUrls: ['../app.component.css'],
 })
 export class ContactComponent implements OnInit {
 
@@ -21,13 +22,11 @@ export class ContactComponent implements OnInit {
   email: string = "";
   tel: string = "";
 
-  ajouter() {
-    this.arrayTemp.nom = this.nom;
-    this.arrayTemp.prenom = this.prenom;
-    this.arrayTemp.email = this.email;
-    this.arrayTemp.tel = this.tel;
-
-    this.tab.push(this.arrayTemp);
+  envoyer() {
+    console.log(this.nom);
+    console.log(this.prenom);
+    console.log(this.email);
+    console.log(this.tel);
 
     this.nom = ""
     this.prenom = ""
