@@ -8,13 +8,8 @@
 
             <form>
                 <div class="row-field">
-                    <label for="nom">Nom</label>
-                    <input type="text" name="nom" id="nom" [(ngModel)]="nom" />
-                </div>
-
-                <div class="row-field">
-                    <label for="prenom">Prénom</label>
-                    <input type="text" name="prenom" id="prenom" [(ngModel)]="prenom" />
+                    <label for="pseudo">Utilisateur</label>
+                    <input type="text" name="pseudo" id="pseudo" [(ngModel)]="pseudo" />
                 </div>
 
                 <div class="row-field">
@@ -23,12 +18,17 @@
                 </div>
 
                 <div class="row-field">
-                    <label for="pass">Mot de passe</label>
-                    <input type="pass" name="text" id="text" [(ngModel)]="pass" />
+                    <label for="password">Mot de passe</label>
+                    <input type="password" name="password" id="password" value="Password!" [(ngModel)]="password" />
                 </div>
 
                 <div class="row-field">
-                    <button id="submit" (click)="ajouter()">Enregistrer</button>
+                    <label for="avatar">Avatar</label>
+                    <input type="text" name="avatar" id="avatar" [(ngModel)]="avatar" />
+                </div>
+
+                <div class="row-field">
+                    <button id="submit" (click)="registerUser()">Enregistrer</button>
                 </div>
             </form>
         </div>

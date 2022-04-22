@@ -13,6 +13,9 @@ export class LoginComponent implements OnInit {
   constructor(private formBuilder: FormBuilder, private userService: UserService) { }
 
   ngOnInit(): void {
+    /* console.log(
+      this.userService.listArticle()
+    ); */
   }
 
   items: string[] = []
@@ -43,20 +46,25 @@ export class LoginComponent implements OnInit {
     this.userService.connection(this.logForm.value.login, this.logForm.value.pass)
   } */
 
-  result: any = []
+  results: any = []
 
   ngConnect() {
     // console.log(this.logForm.value)
     // this.userService.connection(this.email, this.pass)
 
-    this.result = this.userService.connectUser({ email: this.email, password: this.password }).subscribe({
+    this.userService.connectUser({
+      email: 'nyazitaj@yahoo.fr',
+      password: 'Password!'
+    }).subscribe({
       next: result => {
-        console.log(result)
+        this.results.push(result)
       }
     })
-    /* console.log(
-      this.result
-    ) */
+
+    
+    console.log(
+      this.results
+    )
 
     /* console.log(
       this.userService.getConfig()

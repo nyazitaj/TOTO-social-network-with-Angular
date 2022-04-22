@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { userIndex } from './interface';
+import { userIndex, UserRegister } from './interface';
 import { Observable, throwError, tap } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 
@@ -11,6 +11,8 @@ export class UserService {
   urlBase = "https://reseau.jdedev.fr/api/user"
   handleError: any = '';
 
+  urlArticle = "https://reseau.jdedev.fr/api"
+
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json'
@@ -18,13 +20,6 @@ export class UserService {
   };
 
   constructor(private http: HttpClient) { }
-
-  /* connectUser(login: Login) {
-    return this.http.post<RetLogin>(this.urlBase + "/connect", login, this.httpOptions)
-      .pipe(
-        catchError(this.handleError)
-      )
-  } */
 
   connectUser(login: userIndex) {
     return this.http.post/* <RetLogin> */(this.urlBase + "/connect", login, this.httpOptions)
@@ -36,16 +31,29 @@ export class UserService {
       )
   }
 
+  signupUser(signup: UserRegister) {
+    return this.http.post/* <RetLogin> */(this.urlBase + "", signup, this.httpOptions)
+      .pipe(
+        tap(data =>
+          data
+        ),
+        catchError(this.handleError)
+      )
+  }
+
+  listArticle(token: string) {
+    return this.http.post/* <RetLogin> */(this.urlArticle + "", token, this.httpOptions)
+      .pipe(
+        tap(data =>
+          data
+        ),
+        catchError(this.handleError)
+      )
+  }
+
   configUrl = 'assets/config.json';
 
   getConfig() {
     return this.http.get/* <Config> */(this.configUrl);
   }
-
-  /* connection(email: userIndex,) {
-    return this.http.post<RetUserIndex>(this.urlBase + "/connect", login, this.httpOptions)
-      .pipe(
-        catchError(this.handleError)
-      )
-  } */
 }
