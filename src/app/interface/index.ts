@@ -1,7 +1,6 @@
-export interface userIndex {
-    /* email: string
+export interface UserLogin {
+    email: string
     password: string
-    avatar: string */
 }
 
 export interface UserRegister {
@@ -11,7 +10,7 @@ export interface UserRegister {
     avatar: string
 }
 
-export interface RetLogin {
+export interface ResponseServer {
     id: number
     niveau: number
     email: string

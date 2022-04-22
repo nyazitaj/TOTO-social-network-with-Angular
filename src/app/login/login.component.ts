@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
-import { userIndex } from '../interface';
+import { ResponseServer } from '../interface';
 import { UserService } from '../user.service';
 
 @Component({
@@ -16,88 +16,27 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  items: string[] = []
-
-  email: string = "";
-  pass: string = "";
-
-  loginUser() {
-
-    console.log(this.email);
-    console.log(this.pass);
-
-    this.email = ""
-    this.pass = ""
-
-  }
-
-  password: string = ""
-
-
-  /* logForm = this.formBuilder.group({
-    login: '',
-    pass: ''
-  });
-
-  ngConnect() {
-    // console.log(this.logForm.value)
-    this.userService.connection(this.logForm.value.login, this.logForm.value.pass)
-  } */
-
-  results: any = []
+  email: string = "nyazitaj@yahoo.fr";
+  password: string = "Password!"
   urlBase = "localhost:4200"
 
+  // Loggin a user and redirecting it to the articles list
   ngConnect() {
-    // console.log(this.logForm.value)
-    // this.userService.connection(this.email, this.pass)
-
     this.userService.connectUser({
-      email: 'nyazitaj@yahoo.fr',
-      password: 'Password!'
+
+      email: this.email,
+      password: this.password
+
     }).subscribe({
-      next: results => {
-        this.results = []
-        this.results.push(results)
 
-        /* console.log(
-          this.results
-        ) */
+      next: results  => {
+        results
 
-        /* if (this.results[0].email != '' && this.results[0].token != '') {
-          console.log('Everything is OK !')
-          console.log(
-            this.results[0].token
-          )
-
-          this.router.navigate(['/articles']).then(result=>{
-            console.log(result);
-          });
-          // this.router.navigate.
+        if (results.email != '' && results.token != '') {
+          this.router.navigate(['/articles']);
         }
-        else {
-          console.log('Somethinkg went wrong')
-          console.log(
-            this.results[0].token
-          )
-        } */
       }
     })
-
-
-
-    /* console.log(
-      this.userService.getConfig()
-    ) */
   }
 
-
-  /* albums: any = [];
-  constructor(private _albumService: AlbumService) { }
-  ngOnInit() {
-    this._albumService.getAllAlbums().subscribe({
-      next: albums => {
-        this.albums = albums
-      }
-    })
-  } */
 }

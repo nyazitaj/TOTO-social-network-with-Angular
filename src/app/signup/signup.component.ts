@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { userIndex } from '../interface';
+import { Router } from '@angular/router';
 import { UserService } from '../user.service';
 
 @Component({
@@ -9,56 +9,38 @@ import { UserService } from '../user.service';
   styleUrls: ['../app.component.css'],
 })
 export class SignupComponent implements OnInit {
-  title = 'coursAngular';
 
-  constructor(private formBuilder: FormBuilder, private userService: UserService) { }
+  constructor(private formBuilder: FormBuilder, private userService: UserService, private router: Router) { }
 
   ngOnInit(): void {
   }
 
-  pseudo: string = "";
-  email: string = "";
-  password: string = "";
-  avatar: string = "";
-
-  ajouter() {
-
-    console.log(this.pseudo);
-    console.log(this.email);
-    console.log(this.password);
-    console.log(this.pseudo);
-
-    this.pseudo = ""
-    this.email = ""
-    this.password = ""
-    this.avatar = ""
-
-  }
+  pseudo: string = "tajmns";
+  email: string = "nyazitaj@yahoo.fr";
+  password: string = "Password!";
+  avatar: string = "https://estracode.com/wp-content/themes/tajweb/assets/images/logo.png";
 
 
-
-  result: any = []
-
+  // Registering a user and redirecting it to the articles list
   registerUser() {
-    // console.log(this.logForm.value)
-    // this.userService.connection(this.email, this.pass)
+    this.userService.signupUser({
 
-    this.result = this.userService.signupUser({
       pseudo: this.pseudo,
       email: this.email,
       password: this.password,
       avatar: this.avatar
-    }).subscribe({
-      next: result => {
-        console.log(result)
-      }
-    })
-    /* console.log(
-      this.result
-    ) */
 
-    /* console.log(
-      this.userService.getConfig()
-    ) */
+    }).subscribe({
+
+      next: results => {
+        /* console.log(results) */
+
+        if (results.email != '' && results.token != '') {
+          this.router.navigate(['/']);
+        }
+      }
+
+    })
   }
+
 }

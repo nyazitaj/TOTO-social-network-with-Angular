@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { RetLogin, userIndex, UserRegister } from './interface';
+import { ResponseServer, UserLogin, UserRegister } from './interface';
 import { Observable, throwError, tap } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 
@@ -11,6 +11,8 @@ export class UserService {
   urlBase = "https://reseau.jdedev.fr/api/"
   handleError: any = '';
   data: any = '';
+  id: number = 0
+  email: string = '';
   myToken: string = '';
 
   httpOptions = {
@@ -21,26 +23,32 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  connectUser(login: userIndex) {
-    return this.http.post<RetLogin>(this.urlBase + "user/connect", login, this.httpOptions)
+  // Connecting a new user
+  connectUser(login: UserLogin) {
+    return this.http.post<ResponseServer>(this.urlBase + "user/connect", login, this.httpOptions)
       .pipe(
         tap(data => {
           this.data = data
+          this.id = data.id
+          this.email = data.email
+          this.myToken = data.token
           /* console.log(data.id) */
         }
         ),
-        catchError(this.handleError)
+        /* catchError(this.handleError) */
       )
 
   }
 
+  // Registering a new user
   signupUser(signup: UserRegister) {
-    return this.http.post/* <RetLogin> */(this.urlBase + "", signup, this.httpOptions)
+    return this.http.post<ResponseServer>(this.urlBase + "user", signup, this.httpOptions)
       .pipe(
-        tap(data =>
-          data
-        ),
-        catchError(this.handleError)
+        tap(data => {
+          this.data = data
+          /* console.log(data.id) */
+        }),
+        /* catchError(this.handleError) */
       )
   }
 
@@ -57,7 +65,7 @@ export class UserService {
 
     // return this.http.get/* <Config> */(this.urlBase, this.httpOptionsForUsers);
 
-    // return this.http.post/* <RetLogin> */(this.urlBase + "/article", token, this.httpOptions)
+    // return this.http.post/* <ResponseServer> */(this.urlBase + "/article", token, this.httpOptions)
     //   .pipe(
     //     tap(data =>
     //       data
@@ -67,7 +75,7 @@ export class UserService {
   }
 
   listArticle(token: string) {
-    return this.http.post/* <RetLogin> */(this.urlBase + "/article", token, this.httpOptions)
+    return this.http.post/* <ResponseServer> */(this.urlBase + "/article", token, this.httpOptions)
       .pipe(
         tap(data =>
           data
@@ -77,7 +85,7 @@ export class UserService {
   }
 
   // nouvelArticle(token: string) {
-  //   return this.http.post/* <RetLogin> */(this.urlBase + "", token, this.httpOptions)
+  //   return this.http.post/* <ResponseServer> */(this.urlBase + "", token, this.httpOptions)
   //     .pipe(
   //       tap(data =>
   //         data
