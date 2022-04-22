@@ -72,7 +72,8 @@ a.website-logo {
     padding: 15px 0 4px;
     font-size: 0.8em;
 }
-.form-container .row-field input {
+.form-container .row-field input,
+.form-container .row-field textarea {
     width: 95%;
     padding: 5px;
 }

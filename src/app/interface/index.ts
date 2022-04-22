@@ -10,3 +10,11 @@ export interface UserRegister {
     password: string
     avatar: string
 }
+
+export interface RetLogin {
+    id: number
+    niveau: number
+    email: string
+    password: string
+    token: string
+}
