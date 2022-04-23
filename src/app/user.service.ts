@@ -11,6 +11,7 @@ export class UserService {
   urlBase = "https://reseau.jdedev.fr/api/"
   handleError: any = '';
   data: any = '';
+  articles: any = '';
   id: number = 0
   email: string = '';
   myToken: string = '';
@@ -55,7 +56,7 @@ export class UserService {
   httpOptionsForUsers = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
-      Authorization: 'my-auth-token'
+      Authorization: this.myToken
     })
   };
 
@@ -74,15 +75,26 @@ export class UserService {
     //   )
   }
 
-  listArticle(token: string) {
-    return this.http.post/* <ResponseServer> */(this.urlBase + "/article", token, this.httpOptions)
-      .pipe(
-        tap(data =>
-          data
-        ),
-        catchError(this.handleError)
-      )
-  }
+  httpOptionsForArticle = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: this.myToken
+    })
+  };
+
+  listArticle() {
+    return this.http.get<ResponseServer>(this.urlBase + "/article", this.httpOptionsForArticle).subscribe({
+      next(ret) {
+      console.log(ret)
+      },
+      
+      // .pipe(
+      //   tap(articles =>
+      //     this.articles = 'articles'
+      //   ),
+      //   /* catchError(this.handleError) */
+      // )
+  });
 
   // nouvelArticle(token: string) {
   //   return this.http.post/* <ResponseServer> */(this.urlBase + "", token, this.httpOptions)
@@ -92,5 +104,5 @@ export class UserService {
   //       ),
   //       catchError(this.handleError)
   //     )
-  // }
+  }
 }
