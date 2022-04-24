@@ -24,7 +24,10 @@ export class UserService {
   email: string = '';
   myToken: string = '';
   articleList: any = []
+  articleListById: articleList[] = []
   commentList: interfaceCommentList[] = []
+  commentListByIdForUser: interfaceCommentList[] = []
+  articleListByIdForUser: interfaceCommentList[] = []
   newArticleRes: any = '';
   userList: any = []
   singleUser: interfaceSingleUser[] = []
@@ -69,28 +72,6 @@ export class UserService {
       )
   }
 
-  /*  httpOptionsForUsers = {
-     headers: new HttpHeaders({
-       'Content-Type': 'application/json',
-       Authorization: this.myToken
-     })
-   }; */
-
-  // listUsers(token: string) {
-
-  //   return this.data
-
-  //   // return this.http.get/* <Config> */(this.urlBase, this.httpOptionsForUsers);
-
-  //   // return this.http.post/* <ResponseServer> */(this.urlBase + "/article", token, this.httpOptions)
-  //   //   .pipe(
-  //   //     tap(data =>
-  //   //       data
-  //   //     ),
-  //   //     catchError(this.handleError)
-  //   //   )
-  // }
-
   httpOptionsForArticle = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
@@ -113,49 +94,66 @@ export class UserService {
       });
   }
 
+  getArticletById(id: number) {
+    this.articleListById = []
+
+    this.http.get<articleList>(this.urlBase + 'article/' + id, {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        Authorization: 'tajmns ' + this.myToken
+      })
+    })
+      .subscribe(res => {
+        this.articleListById.push(res)
+      });
+
+      return this.articleListById
+  }
+
   // Inserting a new article
   addArticle(paramArticle: interfaceAddArticle) {
-
-    return this.http.post/* <ResponseServer> */(this.urlBase + "article", paramArticle, this.httpOptions)
+    console.log(this.http.post<ResponseServer>(this.urlBase + "article", paramArticle, {
+      headers: {
+        Authorization: 'tajmns' + this.myToken
+      }
+    })
       .pipe(
         tap(data => {
-          // console.log(data);
-          // this.newArticleRes = data
+          this.data = data
         }),
         // catchError(this.handleError)
-      )
-
-    /* this.result = this.userService.signupUser({
-
-      pseudo: this.pseudo,
-      email: this.email,
-      password: this.password,
-      avatar: this.avatar
-
-    }).subscribe({
-
-      next: result => {
-        console.log(result)
-      }
-
-    }) */
+      ))
   }
 
-  nouvelArticle(token: string) {
-    return this.http.post/* <ResponseServer> */(this.urlBase + "", token, this.httpOptions)
-      .pipe(
-        tap(data =>
-          data
-        ),
-        catchError(this.handleError)
-      )
+  getArticleByIdForUser(id: number) {
+    this.articleListByIdForUser = []
+
+    this.http.get<interfaceCommentList>(this.urlBase + 'user/' + id + '/comment', {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        Authorization: 'tajmns ' + this.myToken
+      })
+    })
+      .subscribe(res => {
+        console.log(res)
+        this.articleListByIdForUser.push(res)
+      });
+
+      return this.articleListByIdForUser
   }
 
-  makeFullArray(param: any) {
-    return param
-    /* param.forEach((element: [any]) => {
-      console.log(element)
-    }); */
+  // Deleting an article
+  deleteArticle(id: number) {
+
+    return this.http.delete<interfaceAddArticle>(this.urlBase + 'article/' + id, {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        Authorization: 'tajmns ' + this.myToken
+      })
+    })
+      .subscribe(res => {
+        console.log(res)
+      });
   }
 
   /* Comments */
@@ -173,17 +171,21 @@ export class UserService {
       });
   }
 
-  getCommentsListTemp() {
-    return this.http.get<interfaceCommentList>(this.urlBase + 'comment/' + 1, {
+  getCommentByIdForUser(id: number) {
+    this.commentListByIdForUser = []
+
+    this.http.get<interfaceCommentList>(this.urlBase + 'user/' + id + '/comment', {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
         Authorization: 'tajmns ' + this.myToken
       })
     })
       .subscribe(res => {
-        this.commentList.push(res)
-        /* console.log(res.contenu) */
+        console.log(res)
+        this.commentListByIdForUser.push(res)
       });
+
+      return this.commentListByIdForUser
   }
 
 
@@ -198,7 +200,6 @@ export class UserService {
       })
     })
       .subscribe(res => {
-        /* console.log(res) */
         this.userList.push(res)
       });
 
@@ -216,7 +217,6 @@ export class UserService {
       })
     })
       .subscribe(res => {
-        /* console.log(res) */
         this.singleUser.push(res)
       });
 

@@ -24,6 +24,13 @@ export class UserProfileComponent implements OnInit {
   currentUserComments: any = []
   currentEmail: string = '';
 
+  profil_id: number = 0
+  pseudo: string = ''
+  profile_email: string = ''
+  avatar: string = ''
+  niveau: number = 0
+  password: string = ''
+
   // Making HTTP headers
   httpOptions = {
     headers: new HttpHeaders({
@@ -40,16 +47,8 @@ export class UserProfileComponent implements OnInit {
 
     this.currentUserData = this.userService.currentUserData
 
-    // Current user's articles list, filtering them to show 5 only
-    this.currentUserArticles = this.userService.currentUserArticles
-    /* if(this.currentUserArticles[0]) {
-      this.currentUserArticles[0] = this.currentUserArticles[0].filter((item: any, index: any) => item.id == this.currentUserData.id )
-    } */
-    /* if(this.currentUserArticles[0]) {
-      this.currentUserArticles[0] = this.currentUserArticles[0].filter((item: any, index: any) => index < 5 )
-    } */
-
-    this.currentUserComments = this.userService.currentUserComments
+    this.currentUserComments = this.userService.commentListByIdForUser
+    this.currentUserArticles = this.userService.articleListByIdForUser
 
     this.currentEmail = this.userService.email
 
@@ -61,9 +60,6 @@ export class UserProfileComponent implements OnInit {
       alert("L'utilisateur a été supprimé");
       this.userService.myToken = '';
       this.router.navigate(['signup']);
-    }
-    else {
-      console.log(this.userService.deleteUser(id))
     }
   }
 }

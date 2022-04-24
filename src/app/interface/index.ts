@@ -41,9 +41,9 @@ export interface interfaceUserList {
 
 export interface interfaceSingleUser {
     id: number
-    pseudo: number
-    email: number
-    avatar: number
+    pseudo: string
+    email: string
+    avatar: string
     niveau: number
     password: string
 }

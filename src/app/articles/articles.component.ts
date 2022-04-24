@@ -37,57 +37,11 @@ export class ArticlesComponent implements OnInit {
 
     this.data = this.userService.data
 
-    /* this.userService.listUsers('token').subscribe({
-      next: result => {
-        console.log(result)
-      }
-    }); */
-
-
-    // this.http.get(this.urlBase + 'article', this.httpOptions)
-    //   .subscribe(res => {
-    //     // console.log(res)
-    //     this.articleList = res
-    //   });
-
     this.userService.getArticleList()
     this.userService.getCommentsList()
     this.articleList = this.userService.articleList
     console.log(this.articleList)
 
-    /* this.userService.articleList.forEach((element: any) => {
-      console.log(element);
-    }); */
-
-
-    /* console.log(
-      this.userService.articleList
-    ); */
-
-    /* console.log(
-      this.userService.makeFullArray(
-        this.userService.articleList
-      )
-    ); */
-
-
-
-    /* console.log(
-      this.userService.getArticleList()
-    ) */
-
-
-
-    // Getting the comments list at the loading
-    // this.http.get(this.urlBase + 'comment', this.httpOptions)
-    //   .subscribe(res => {
-    //     // console.log(res)
-    //     this.commentList = res
-    //   });
-
-    // console.log(this.commentList);
-
-    // console.log(this.makeFullArray(this.userService.articleList))
 
   }
 
@@ -97,36 +51,18 @@ export class ArticlesComponent implements OnInit {
   avatar: string = "";
   result: any = []
 
-  titre: string = "Coucou";
-  contenu: string = "Kiki"
-
-  // email: string = "nyazitaj@yahoo.fr";
-  // password: string = "Password!"
-  // urlBase = "localhost:4200"
-
-  // // Loggin a user and redirecting it to the articles list
-  // ngConnect() {
-  //   this.userService.connectUser({
-
-  //     email: this.email,
-  //     password: this.password
-
-  //   }).subscribe({
-
-  //     next: results  => {
-  //       results
-
-  //       if (results.email != '' && results.token != '') {
-  //         this.router.navigate(['/articles']);
-  //       }
-  //     }
-  //   })
-  // }
+  titre: string = "";
+  contenu: string = ""
+  commentaire: string = ""
 
   ajouterArticle() {
     this.userService.addArticle({
       titre: this.titre,
       contenu: this.contenu
     })
+  }
+
+  deleteArticle(id: number) {
+    this.userService.deleteArticle(id)
   }
 }

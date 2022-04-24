@@ -1,9 +1,6 @@
 <section>
 
     <div class="container">
-        <ul class=""taj>
-            <li *ngIf="data as value">{{ value.email }}</li>
-        </ul>
 
         <div class="form-container">
             <div class="page-title">
@@ -12,17 +9,17 @@
 
             <form>
                 <div class="row-field">
-                    <label for="titre">Utilisateur</label>
-                    <input type="text" name="titre" id="titre" ngModel="titre" />
+                    <label for="titre">Titre</label>
+                    <input type="text" name="titre" id="titre" [(ngModel)]="titre" />
                 </div>
 
                 <div class="row-field">
-                    <label for="contenu">Avatar</label>
-                    <textarea name="contenu" id="contenu" ngModel="contenu" rows="7"></textarea>
+                    <label for="contenu">Contenu</label>
+                    <textarea name="contenu" id="contenu" [(ngModel)]="contenu" rows="7"></textarea>
                 </div>
 
                 <div class="row-field">
-                    <button id="submit" (click)="ajouterArticle()">Enregistrer</button>
+                    <button id="submit" (click)="ajouterArticle()">Ajouter</button>
                 </div>
             </form>
         </div>
@@ -37,7 +34,8 @@
             </div>
 
             <div>
-                <textarea name="commentaire" id="commentaire" ngModel="commentaire" rows="7" placeholder="Votre commentaire..."></textarea>
+                <textarea name="commentaire" id="commentaire" [(ngModel)]="commentaire" rows="5" placeholder="Votre commentaire..."></textarea>
+                <button id="submit" (click)="deleteArticle(x.id)">Delete</button>
                 <button id="submit">Ajouter un commentaire</button>
             </div>
         </div>

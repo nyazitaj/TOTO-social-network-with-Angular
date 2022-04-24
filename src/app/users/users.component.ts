@@ -36,108 +36,9 @@ export class UsersComponent implements OnInit {
       this.router.navigate(['']);
     }
 
-
     this.usersList = this.userService.getUsersList()
 
-
-    /* console.log(
-      this.userService.userList
-    ); */
-
-    // this.data = this.userService.data
-
-    /* this.userService.listUsers('token').subscribe({
-      next: result => {
-        console.log(result)
-      }
-    }); */
-
-
-    // this.http.get(this.urlBase + 'article', this.httpOptions)
-    //   .subscribe(res => {
-    //     // console.log(res)
-    //     this.articleList = res
-    //   });
-
-    // this.userService.getArticleList()
-    // this.articleList = this.userService.articleList
-    // console.log(this.articleList)
-
-    /* this.userService.articleList.forEach((element: any) => {
-      console.log(element);
-    }); */
-
-
-    /* console.log(
-      this.userService.articleList
-    ); */
-
-    /* console.log(
-      this.userService.makeFullArray(
-        this.userService.articleList
-      )
-    ); */
-
-
-
-    /* console.log(
-      this.userService.getArticleList()
-    ) */
-
-
-
-    // Getting the comments list at the loading
-    // this.http.get(this.urlBase + 'comment', this.httpOptions)
-    //   .subscribe(res => {
-    //     // console.log(res)
-    //     this.commentList = res
-    //   });
-
-    // console.log(this.commentList);
-
-    // console.log(this.makeFullArray(this.userService.articleList))
-
   }
-
-  // pseudo: string = "";
-  // email: string = "";
-  // password: string = "";
-  // avatar: string = "";
-  // result: any = []
-
-  // titre: string = "Coucou";
-  // contenu: string = "Kiki"
-
-  // email: string = "nyazitaj@yahoo.fr";
-  // password: string = "Password!"
-  // urlBase = "localhost:4200"
-
-  // // Loggin a user and redirecting it to the users list
-  // ngConnect() {
-  //   this.userService.connectUser({
-
-  //     email: this.email,
-  //     password: this.password
-
-  //   }).subscribe({
-
-  //     next: results  => {
-  //       results
-
-  //       if (results.email != '' && results.token != '') {
-  //         this.router.navigate(['/users']);
-  //       }
-  //     }
-  //   })
-  // }
-
-  // ajouterArticle() {
-  //   this.userService.addArticle({
-  //     titre: this.titre,
-  //     contenu: this.contenu
-  //   })
-  // }
-
 
   /* Users */
 
@@ -148,12 +49,18 @@ export class UsersComponent implements OnInit {
     this.userService.currentUserArticles = this.userService.articleList
     this.router.navigate(['user-profile']);
 
-    this.userService.currentUserComments = this.userService.commentList
+    /* this.userService.currentUserComments = this.userService.commentList
+    this.router.navigate(['user-profile']); */
+
+    this.userService.getCommentByIdForUser(id)
     this.router.navigate(['user-profile']);
 
-    /* console.log(
-      this.userService.getSingleUser(id)
-    ) */
+    this.userService.getArticleByIdForUser(id)
+    this.router.navigate(['user-profile']);
+
+    this.userService.getArticletById(id)
+    this.router.navigate(['user-profile']);
+
   }
 
 }

@@ -15,10 +15,10 @@ export class SignupComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  pseudo: string = "batman"
-  email: string = "batman@batmobile.vroom"
-  password: string = "Password!"
-  avatar: string = "https://estracode.com/wp-content/themes/tajweb/assets/images/logo.png";
+  pseudo: string = ""
+  email: string = ""
+  password: string = ""
+  avatar: string = "";
 
 
   // Registering a user and redirecting it to the articles list

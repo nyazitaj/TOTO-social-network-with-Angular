@@ -16,8 +16,8 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  email: string = "batman@batmobile.vroom";
-  password: string = "Password!"
+  email: string = "";
+  password: string = ""
   urlBase = "localhost:4200"
   myToken: string = ''
 
