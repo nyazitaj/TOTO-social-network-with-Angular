@@ -40,7 +40,7 @@ Liste des choses attendu pour le TP :
   - Une page de connexion avec le formulaire qui fonctionne (Done)
   - Une page inscription qui envoie bien au back-end l'utilisateur (Done)
   - Stockage du token (Done)
-  - La liste des articles et la liste des commentaires
+  - La liste des articles et la liste des commentaires (Done neema neema)
   - Possibilité d'ajouter un article
   - Possibilité d'ajouter un commentaire
   - Si l'article appartient à votre utilisateur ajouter un bouton modifier et un bouton supprimer

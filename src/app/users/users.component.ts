@@ -7,10 +7,10 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './articles.component.html',
+  templateUrl: './users.component.html',
   styleUrls: ['../app.component.css'],
 })
-export class ArticlesComponent implements OnInit {
+export class UsersComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder, private userService: UserService, private router: Router, private http: HttpClient) { }
 
@@ -19,6 +19,7 @@ export class ArticlesComponent implements OnInit {
   commentList: any = []
   fullArray: any = []
   articleList: any = []
+  usersList: any = []
 
 
   // Making HTTP headers
@@ -35,7 +36,15 @@ export class ArticlesComponent implements OnInit {
       this.router.navigate(['']);
     }
 
-    this.data = this.userService.data
+
+    this.usersList = this.userService.getUsersList()
+
+
+    /* console.log(
+      this.userService.userList
+    ); */
+
+    // this.data = this.userService.data
 
     /* this.userService.listUsers('token').subscribe({
       next: result => {
@@ -50,9 +59,9 @@ export class ArticlesComponent implements OnInit {
     //     this.articleList = res
     //   });
 
-    this.userService.getArticleList()
-    this.articleList = this.userService.articleList
-    console.log(this.articleList)
+    // this.userService.getArticleList()
+    // this.articleList = this.userService.articleList
+    // console.log(this.articleList)
 
     /* this.userService.articleList.forEach((element: any) => {
       console.log(element);
@@ -90,20 +99,20 @@ export class ArticlesComponent implements OnInit {
 
   }
 
-  pseudo: string = "";
-  email: string = "";
-  password: string = "";
-  avatar: string = "";
-  result: any = []
+  // pseudo: string = "";
+  // email: string = "";
+  // password: string = "";
+  // avatar: string = "";
+  // result: any = []
 
-  titre: string = "Coucou";
-  contenu: string = "Kiki"
+  // titre: string = "Coucou";
+  // contenu: string = "Kiki"
 
   // email: string = "nyazitaj@yahoo.fr";
   // password: string = "Password!"
   // urlBase = "localhost:4200"
 
-  // // Loggin a user and redirecting it to the articles list
+  // // Loggin a user and redirecting it to the users list
   // ngConnect() {
   //   this.userService.connectUser({
 
@@ -116,16 +125,23 @@ export class ArticlesComponent implements OnInit {
   //       results
 
   //       if (results.email != '' && results.token != '') {
-  //         this.router.navigate(['/articles']);
+  //         this.router.navigate(['/users']);
   //       }
   //     }
   //   })
   // }
 
-  ajouterArticle() {
-    this.userService.addArticle({
-      titre: this.titre,
-      contenu: this.contenu
-    })
+  // ajouterArticle() {
+  //   this.userService.addArticle({
+  //     titre: this.titre,
+  //     contenu: this.contenu
+  //   })
+  // }
+
+
+  /* Users */
+  getSingleUser(id: number) {
+    this.userService.currentUserData = this.userService.getSingleUser(id)
+    this.router.navigate(['user-profile']);
   }
 }

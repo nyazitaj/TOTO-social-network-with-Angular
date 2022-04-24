@@ -22,22 +22,23 @@
                 </div>
 
                 <div class="row-field">
-                    <button id="submit" (click)="addArticle()">Enregistrer</button>
+                    <button id="submit" (click)="ajouterArticle()">Enregistrer</button>
                 </div>
             </form>
         </div>
 
-        <div class="article-container">
+        <div class="article-container" *ngFor="let x of articleList[0]">
             <div class="article-title">
-                <h3>Titre : Officia deserunt mollit anim id est laborum.</h3>
+                <h3>Titre : {{ x.titre }}</h3>
+                <p>Date : {{ x.creation }}</p>
             </div>
             <div class="article-description">
-                <p>Contenu : Lorem ipsum dolor sit amet, consectetur </p>
+                <p>Contenu : {{ x.contenu }}</p>
             </div>
 
             <div>
                 <textarea name="commentaire" id="commentaire" ngModel="commentaire" rows="7" placeholder="Votre commentaire..."></textarea>
-                <button id="submit" (click)="addArticle()">Ajouter un commentaire</button>
+                <button id="submit">Ajouter un commentaire</button>
             </div>
         </div>
     </div>

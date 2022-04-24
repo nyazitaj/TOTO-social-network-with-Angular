@@ -1,0 +1,24 @@
+<section>
+    <div class="container">
+        <div class="page-title">
+            <h2>Mon compte</h2>
+        </div>
+
+        <div class="form-container user-profile-container" *ngFor="let x of currentUserData">
+            <div class="row-field row-user-profile">
+                <div class="profile-image">
+                    <img src="../../assets/images/Circle-icons-profile.svg" alt="Image de profil" with="85" />
+                </div>
+                <div class="profile-data">
+                    <div>Utilisateur : {{  x.pseudo}}</div>
+                    <div>Email : {{  x.email}}</div>
+                    <div>Avatar : {{  x.avatar}}</div>
+                </div>
+                <div class="profile-buttons">
+                    <button id="submit">Edit</button>
+                    <button id="submit"*ngIf="currentEmail == x.email" (click)="deleteUser(x.id)">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

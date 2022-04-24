@@ -37,6 +37,18 @@ a.website-logo {
     padding: 8px;
     display: block;
 }
+.row-header .col-header ul li button {
+    transition: .25s all;
+    border: 1px solid #ededed;
+    text-decoration: none;
+    color: #5a086e;
+    padding: 8px;
+    display: block;
+    cursor: pointer;
+    background-color: white;
+    border: none;
+    font-size: 1em;
+}
 
 /* Container */
 .container {
@@ -47,7 +59,7 @@ a.website-logo {
     max-width: 1200px;
     margin: auto;
     font-family: sans-serif;
-    padding-top: 70px;
+    padding: 70px 0;
     min-height: 80vh;
 }
 .page-title h2 {
@@ -107,4 +119,36 @@ footer {
     color: white;
     font-family: sans-serif;
     font-size: 0.8em;
+}
+
+/* User */
+.form-container.user-container {
+    max-width: inherit;
+    padding: 0;
+    margin: 32px 0;
+}
+.form-container.user-container .row-field.row-user-profile {
+    padding: 0;
+}
+.form-container.user-container .profile-buttons button {
+    padding: 7px 30px !important;
+}
+
+/* User profile */
+.form-container.user-profile-container {
+    max-width: inherit;
+    padding: 40px 0;
+}
+.profile-image img {
+    width: 115px;
+}
+.profile-data {
+    padding: 20px 0;
+}
+.profile-data div {
+    padding: 5px 0;
+}
+.profile-buttons button {
+    margin-right: 30px !important;
+    padding: 7px 30px !important;
 }

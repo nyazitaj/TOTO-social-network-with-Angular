@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
-import { Router } from '@angular/router';
-import { UserService } from '../user.service';
+import { Component, OnInit } from '@angular/core'
+import { FormBuilder } from '@angular/forms'
+import { Router } from '@angular/router'
+import { UserService } from '../user.service'
 
 @Component({
   selector: 'app-root',
@@ -15,9 +15,9 @@ export class SignupComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  pseudo: string = "tajmns";
-  email: string = "nyazitaj@yahoo.fr";
-  password: string = "Password!";
+  pseudo: string = "batman"
+  email: string = "batman@batmobile.vroom"
+  password: string = "Password!"
   avatar: string = "https://estracode.com/wp-content/themes/tajweb/assets/images/logo.png";
 
 

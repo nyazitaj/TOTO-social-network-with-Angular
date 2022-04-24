@@ -16,9 +16,10 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  email: string = "nyazitaj@yahoo.fr";
+  email: string = "batman@batmobile.vroom";
   password: string = "Password!"
   urlBase = "localhost:4200"
+  myToken: string = ''
 
   // Loggin a user and redirecting it to the articles list
   ngConnect() {
@@ -37,6 +38,10 @@ export class LoginComponent implements OnInit {
         }
       }
     })
+
+   /*  if (this.userService.isConnected() == true) {
+      this.myToken = this.userService.myToken
+    } */
   }
 
 }

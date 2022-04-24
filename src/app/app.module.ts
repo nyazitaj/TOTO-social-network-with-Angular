@@ -14,6 +14,8 @@ import { SignupComponent } from './signup/signup.component';
 import { UserService } from './user.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ArticlesComponent } from './articles/articles.component';
+import { UsersComponent } from './users/users.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { ArticlesComponent } from './articles/articles.component';
     FooterComponent,
     LoginComponent,
     SignupComponent,
-    ArticlesComponent
+    ArticlesComponent,
+    UsersComponent,
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,

@@ -17,3 +17,33 @@ export interface ResponseServer {
     password: string
     token: string
 }
+
+export interface articleList {
+    id: number
+    id_article: number
+    titre: string
+    contenu: string
+    creation: number
+}
+
+export interface interfaceAddArticle {
+    titre: string
+    contenu: string
+}
+
+export interface interfaceUserList {
+    id: number
+    id_article: number
+    titre: string
+    contenu: string
+    creation: number
+}
+
+export interface interfaceSingleUser {
+    id: number
+    pseudo: number
+    email: number
+    avatar: number
+    niveau: number
+    password: string
+}
