@@ -138,6 +138,7 @@ footer {
 .form-container.user-profile-container {
     max-width: inherit;
     padding: 40px 0;
+    margin-bottom: 35px;
 }
 .profile-image img {
     width: 115px;
@@ -151,4 +152,21 @@ footer {
 .profile-buttons button {
     margin-right: 30px !important;
     padding: 7px 30px !important;
+}
+.form-container.user-profile-container.user-profile-article-comment {
+    display: flex;
+}
+.user-profile-article, .user-profile-comment {
+    width: 100%;
+    padding: 0 10px;
+}
+.form-container.user-profile-container.user-profile-article-comment h2 {
+    margin: 0 15px;
+}
+.form-container.user-profile-container.user-profile-article-comment .row-field.row-user-profile {
+    width: 95%;
+}
+.user-profile-article-current, .user-profile-comment-current {
+    border-bottom: 1px solid silver;
+    width: 90%;
 }

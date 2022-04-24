@@ -47,3 +47,11 @@ export interface interfaceSingleUser {
     niveau: number
     password: string
 }
+
+export interface interfaceCommentList {
+    id: number
+    id_article: number
+    id_commentaire: number
+    contenu: string
+    creation: number
+}

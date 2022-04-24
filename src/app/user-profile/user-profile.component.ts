@@ -20,6 +20,8 @@ export class UserProfileComponent implements OnInit {
   fullArray: any = []
   articleList: any = []
   currentUserData: any = []
+  currentUserArticles: any = []
+  currentUserComments: any = []
   currentEmail: string = '';
 
   // Making HTTP headers
@@ -38,6 +40,17 @@ export class UserProfileComponent implements OnInit {
 
     this.currentUserData = this.userService.currentUserData
 
+    // Current user's articles list, filtering them to show 5 only
+    this.currentUserArticles = this.userService.currentUserArticles
+    /* if(this.currentUserArticles[0]) {
+      this.currentUserArticles[0] = this.currentUserArticles[0].filter((item: any, index: any) => item.id == this.currentUserData.id )
+    } */
+    /* if(this.currentUserArticles[0]) {
+      this.currentUserArticles[0] = this.currentUserArticles[0].filter((item: any, index: any) => index < 5 )
+    } */
+
+    this.currentUserComments = this.userService.currentUserComments
+
     this.currentEmail = this.userService.email
 
   }
@@ -46,7 +59,7 @@ export class UserProfileComponent implements OnInit {
   deleteUser(id: number) {
     if (this.userService.deleteUser(id)) {
       alert("L'utilisateur a été supprimé");
-      // location.reload()
+      this.userService.myToken = '';
       this.router.navigate(['signup']);
     }
     else {

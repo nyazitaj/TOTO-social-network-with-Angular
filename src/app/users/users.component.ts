@@ -140,8 +140,20 @@ export class UsersComponent implements OnInit {
 
 
   /* Users */
+
   getSingleUser(id: number) {
     this.userService.currentUserData = this.userService.getSingleUser(id)
     this.router.navigate(['user-profile']);
+
+    this.userService.currentUserArticles = this.userService.articleList
+    this.router.navigate(['user-profile']);
+
+    this.userService.currentUserComments = this.userService.commentList
+    this.router.navigate(['user-profile']);
+
+    /* console.log(
+      this.userService.getSingleUser(id)
+    ) */
   }
+
 }

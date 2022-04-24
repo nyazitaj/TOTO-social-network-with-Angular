@@ -48,12 +48,12 @@ Liste des choses attendu pour le TP :
   - Gerer la suppression d'article
   - Gerer la modification de commentaire
   - Gerer la suppression de commentaire
-  - Afficher la liste des utilisateurs
-  - Faire une page profile utilisateur (avec la liste des 5 derniers articles et des 5 derniers commentaires de l'utilisateur)
-  - Permettre à un utilisateur de modifier et supprimer son compte (mais pas celui des autres)
-  - Gérer une barre de navigation qui affiche des lien différents si non connecté que si connecté (peux etre fait en 2 composants)
-  - Interdire l'accès aux pages qui doivent etre accessible en connecté si non connecté (principe des guards)
+  - Afficher la liste des utilisateurs (Done)
+  - Faire une page profile utilisateur (avec la liste des 5 derniers articles et des 5 derniers commentaires de l'utilisateur) (Done neema neema)
+  - Permettre à un utilisateur de modifier et supprimer son compte (mais pas celui des autres) (Done neema neema)
+  - Gérer une barre de navigation qui affiche des lien différents si non connecté que si connecté (peux etre fait en 2 composants) (Done)
+  - Interdire l'accès aux pages qui doivent etre accessible en connecté si non connecté (principe des guards) (Done, by checking the token presence)
   - Réaliser les tests automatisé sur un composant au choix
   - Réaliser les tests automatisé sur un service au choix
-  - Réaliser une présentation acceptable (css perso, bootstrap, semantic, tailwind, bulma, material, etc...)
+  - Réaliser une présentation acceptable (css perso, bootstrap, semantic, tailwind, bulma, material, etc...) (Done)
 

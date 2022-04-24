@@ -51,6 +51,7 @@ export class ArticlesComponent implements OnInit {
     //   });
 
     this.userService.getArticleList()
+    this.userService.getCommentsList()
     this.articleList = this.userService.articleList
     console.log(this.articleList)
 

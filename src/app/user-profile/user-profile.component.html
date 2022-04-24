@@ -10,13 +10,40 @@
                     <img src="../../assets/images/Circle-icons-profile.svg" alt="Image de profil" with="85" />
                 </div>
                 <div class="profile-data">
-                    <div>Utilisateur : {{  x.pseudo}}</div>
-                    <div>Email : {{  x.email}}</div>
-                    <div>Avatar : {{  x.avatar}}</div>
+                    <div>Utilisateur : {{ x.pseudo}}</div>
+                    <div>Email : {{ x.email}}</div>
+                    <div>Avatar : {{ x.avatar}}</div>
                 </div>
                 <div class="profile-buttons">
                     <button id="submit">Edit</button>
-                    <button id="submit"*ngIf="currentEmail == x.email" (click)="deleteUser(x.id)">Delete</button>
+                    <button id="submit" *ngIf="currentEmail == x.email" (click)="deleteUser(x.id)">Delete</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-container user-profile-container user-profile-article-comment">
+            <div class="user-profile-article">
+                <h2>5 derniers articles de l'utilisateur</h2>
+                <div class="user-profile-article-current" *ngFor="let x of currentUserArticles[0]; let index = index;">
+                    <div class="row-field row-user-profile" *ngIf="(index < 5)">
+                        <div class="profile-data">
+                            <div>Titre : {{ x.titre}}</div>
+                            <div>Contenu : {{ x.contenu}}</div>
+                            <div>Date : {{ x.creation}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="user-profile-comment">
+                <h2>5 derniers commentaires de l'utilisateur</h2>
+                <div class="user-profile-comment-current" *ngFor="let x of currentUserComments[0]; let index = index;">
+                    <div class="row-field row-user-profile" *ngIf="(index < 5)">
+                        <div class="profile-data">
+                            <div>{{ x.contenu}}</div>
+                            <div>{{ x.creation}}</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

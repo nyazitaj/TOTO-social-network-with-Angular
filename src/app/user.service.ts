@@ -6,7 +6,8 @@ import {
   UserRegister,
   articleList,
   interfaceAddArticle,
-  interfaceSingleUser
+  interfaceSingleUser,
+  interfaceCommentList
 } from './interface';
 import { Observable, throwError, tap } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
@@ -23,10 +24,15 @@ export class UserService {
   email: string = '';
   myToken: string = '';
   articleList: any = []
+  commentList: interfaceCommentList[] = []
   newArticleRes: any = '';
   userList: any = []
   singleUser: interfaceSingleUser[] = []
   currentUserData: any = []
+  currentUserArticles: any = []
+  currentUserComments: any = []
+
+  userDataForProfile: interfaceSingleUser[] = []
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -92,8 +98,10 @@ export class UserService {
     })
   };
 
+  /* Articles */
+
+  // Getting the articles list
   getArticleList() {
-    // Getting the articles list at the loading
     this.http.get<articleList>(this.urlBase + 'article', {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
@@ -105,7 +113,7 @@ export class UserService {
       });
   }
 
-
+  // Inserting a new article
   addArticle(paramArticle: interfaceAddArticle) {
 
     return this.http.post/* <ResponseServer> */(this.urlBase + "article", paramArticle, this.httpOptions)
@@ -150,7 +158,38 @@ export class UserService {
     }); */
   }
 
+  /* Comments */
+
+  // Getting the comments list
+  getCommentsList() {
+    this.http.get<interfaceCommentList>(this.urlBase + 'comment', {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        Authorization: 'tajmns ' + this.myToken
+      })
+    })
+      .subscribe(res => {
+        this.commentList.push(res)
+      });
+  }
+
+  getCommentsListTemp() {
+    return this.http.get<interfaceCommentList>(this.urlBase + 'comment/' + 1, {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        Authorization: 'tajmns ' + this.myToken
+      })
+    })
+      .subscribe(res => {
+        this.commentList.push(res)
+        /* console.log(res.contenu) */
+      });
+  }
+
+
   /* Users */
+
+  // Get the user list
   getUsersList() {
     this.http.get/* <articleList> */(this.urlBase + 'user', {
       headers: new HttpHeaders({
@@ -166,8 +205,9 @@ export class UserService {
     return this.userList
   }
 
+  // Getting a single use data by id for profile-page
   getSingleUser(id: number) {
-        this.singleUser = []
+    this.singleUser = []
 
     this.http.get<interfaceSingleUser>(this.urlBase + 'user/' + id, {
       headers: new HttpHeaders({
@@ -183,6 +223,7 @@ export class UserService {
     return this.singleUser
   }
 
+  // Deleting a use
   deleteUser(id: number) {
 
     return this.http.delete<interfaceSingleUser>(this.urlBase + 'user/' + id, {
@@ -196,17 +237,7 @@ export class UserService {
       });
   }
 
-  // isEmailValid() {
-  //   return this.singleUser
-
-  //   /* if (this.email != this.singleUser[0].email) {
-  //     return true
-  //   }
-  //   else {
-  //     return false
-  //   } */
-  // }
-
+  // Checking wheter a user is connected or not
   isConnected() {
     if (this.myToken != '') {
       return true
